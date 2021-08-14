@@ -9,3 +9,6 @@
 - `ModelSerializer` allows writing more concise serializer classes:
   - Determine the set of fields automatically
   - Put default implementations for the `create()` and `update()` methods in place without reinventing the wheel
+
+- By convention, serializers are named after the model they are associated with (e.g. `Snippet` model --> `SnippetSerializer`)
+  - The `class Meta` has two required attributes: `model` and `fields` (`__all__` or a list of fields)
