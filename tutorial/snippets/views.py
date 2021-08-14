@@ -20,6 +20,7 @@ def snippet_list(request, format=None):
         serializer = SnippetSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+            # Return the serializer's data on success
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -42,6 +43,7 @@ def snippet_detail(request, pk, format=None):
         serializer = SnippetSerializer(snippet, data=request.data)
         if serializer.is_valid():
             serializer.save()
+            # Return the serializer's data on success
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

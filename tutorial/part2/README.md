@@ -8,7 +8,7 @@
     ![Adding optional format suffixes to show all snippets](images/optional-format-suffixes-all.png)
     ![Adding optional format suffixes to show one specific snippet](images/optional-format-suffixes-1.png)
   
-  - The `Response` object takes unrendered content and uses [content negotiation](https://restfulapi.net/content-negotiation/) to determine the correct return type.
+  - The `Response` object takes unrendered content and uses [content negotiation](https://restfulapi.net/content-negotiation/) to determine the correct return type. It can return `serializer.data` or a customized response as a dictionary.
 
 - It also provides a series of status codes for readability. Using an identifier (such as `HTTP_400_BAD_REQUEST`) from the `status` module is easier to understand than just `400`.
 
