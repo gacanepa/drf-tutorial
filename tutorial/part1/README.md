@@ -6,7 +6,13 @@
 
 - Serializers convert snippet instances to/from representations such as JSON.
 
+| Process         | Conversion         | Purpose                                             |
+| --------------- | ------------------ | --------------------------------------------------- |
+| Serialization   | Object into string | Transmit data or store it in a file as byte strings |
+| Deserialization | String into object | Recover the original object for manipulation        |
+
 - `ModelSerializer` allows writing more concise serializer classes:
+
   - Determine the set of fields automatically
   - Put default implementations for the `create()` and `update()` methods in place without reinventing the wheel
 
