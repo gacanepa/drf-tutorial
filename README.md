@@ -1,6 +1,6 @@
 # A frontend dude comes to Backendville
 
-This repo stores my code and notes while going over the [DRF tutorial](https://www.django-rest-framework.org/tutorial/1-serialization/).
+This repo stores my code and notes while going over the [DRF tutorial](https://www.django-rest-framework.org/tutorial/1-serialization/). Each part of the tutorial has a subdirectory with an individual README inside of **tutorial**
 
 ### Developer tools
 
