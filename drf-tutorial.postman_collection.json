@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "203aeda0-0bfb-49f5-ad39-8cb7ab8c0e0a",
+		"name": "DRF Tutorial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_drf}}/users/",
+							"host": [
+								"{{api_drf}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_drf}}/users/1",
+							"host": [
+								"{{api_drf}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Snippets",
+			"item": [
+				{
+					"name": "Get all snippets",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_drf}}/snippets",
+							"host": [
+								"{{api_drf}}"
+							],
+							"path": [
+								"snippets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create snippet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Running type\",\r\n    \"code\": \"type('Gabriel')\\n\",\r\n    \"linenos\": false,\r\n    \"language\": \"python\",\r\n    \"style\": \"friendly\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_drf}}/snippets/",
+							"host": [
+								"{{api_drf}}"
+							],
+							"path": [
+								"snippets",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get single snippet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_drf}}/snippets/1",
+							"host": [
+								"{{api_drf}}"
+							],
+							"path": [
+								"snippets",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update snippet",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"title\": \"Basic echo\",\r\n    \"code\": \"echo('I love Bash. Do you?')\",\r\n    \"linenos\": true,\r\n    \"language\": \"bash\",\r\n    \"style\": \"friendly\",\r\n    \"owner\": \"gabriel\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_drf}}/snippets/3/",
+							"host": [
+								"{{api_drf}}"
+							],
+							"path": [
+								"snippets",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All snippets (HTML)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/html",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_drf}}/snippets/",
+							"host": [
+								"{{api_drf}}"
+							],
+							"path": [
+								"snippets",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "scalar01!",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "gabriel",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_drf",
+			"value": "http://localhost:8000"
+		}
+	]
+}
