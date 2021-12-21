@@ -2,49 +2,43 @@ from django.contrib.auth.models import User
 from snippets.models import Snippet
 from snippets.permissions import IsOwnerOrReadOnly
 from snippets.serializers import SnippetSerializer, UserSerializer
-from rest_framework import generics, permissions, renderers
-from rest_framework.decorators import api_view
+from rest_framework import generics, permissions, renderers, viewsets
+from rest_framework.decorators import api_view, action
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
 
-# Create your views here.
-class SnippetList(generics.ListCreateAPIView):
+class SnippetViewSet(viewsets.ModelViewSet):
     """
-    List all code snippets, or create a new object
+    This viewset provides the following actions for the Snippet model:
+    - list
+    - create
+    - retrieve
+    - update
+    - destroy
+    Additional action: highlight
     """
 
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = (
+        permissions.IsAuthenticatedOrReadOnly,
+        IsOwnerOrReadOnly,
+    )
 
+    @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
+    def highlight(self, request, *args, **kwargs):
+        snippet = self.get_object()
+        return Response(snippet.highlighted)
+
+    # Not routable
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
 
-class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    Retrieve, update or delete a code snippet
-    """
-
-    queryset = Snippet.objects.all()
-    serializer_class = SnippetSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
-
-
-# ListAPIView and RetrieveAPIView are two generic read-only views
-class UserList(generics.ListAPIView):
-    """
-    List all users
-    """
-
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
-class UserDetail(generics.RetrieveAPIView):
-    """
-    Retrieve a user
+    This viewset provides list and retrieve actions for the User model.
     """
 
     queryset = User.objects.all()
